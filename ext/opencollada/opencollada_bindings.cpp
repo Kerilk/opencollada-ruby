@@ -1,4 +1,5 @@
 #include "rice/Module.hpp"
+#include <COLLADAFW.h>
 
 using namespace Rice;
 
