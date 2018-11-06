@@ -1,0 +1,1 @@
+require 'opencollada_bindings'

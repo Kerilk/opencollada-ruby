@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/Kerilk/opencollada-ruby"
   s.summary = "Ruby OpenCOLLADA"
   s.description = "Ruby OpenCOLLADA Bindings"
-  s.files = %w( opencollada.gemspec LICENSE ext/opencollada/opencollada.cpp ext/opencollada/extconf.rb )
+  s.files = %w( opencollada.gemspec LICENSE ext/opencollada/opencollada_bindings.cpp ext/opencollada/extconf.rb lib/opencollada.rb )
   s.extensions << 'ext/opencollada/extconf.rb'
   s.has_rdoc = false
   s.license = 'BSD-2-Clause'
