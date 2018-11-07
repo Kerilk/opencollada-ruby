@@ -5,6 +5,12 @@ using namespace Rice;
 
 Enum<COLLADAFW::ClassId> rb_cCFWClassId;
 
+template<> inline COLLADAFW::ClassId from_ruby<COLLADAFW::ClassId>(Rice::Object x)
+{
+	Rice::Data_Object<COLLADAFW::ClassId> d(x, rb_cCFWClassId);
+	return *d;
+}
+
 void rb_define_CFWClassId()
 {
 	rb_cCFWClassId = define_enum<COLLADAFW::ClassId>("ClassId", rb_cCFW);

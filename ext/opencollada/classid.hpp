@@ -8,11 +8,7 @@ using namespace Rice;
 
 extern Rice::Enum<COLLADAFW::ClassId> rb_cCFWClassId;
 
-template<> inline COLLADAFW::ClassId from_ruby<COLLADAFW::ClassId>(Rice::Object x)
-{
-	Rice::Data_Object<COLLADAFW::ClassId> d(x, rb_cCFWClassId);
-	return *d;
-} 
+template<> inline COLLADAFW::ClassId from_ruby<COLLADAFW::ClassId>(Rice::Object x);
 
 void rb_define_CFWClassId();
 #endif
