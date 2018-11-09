@@ -6,24 +6,36 @@ using namespace Rice;
 
 Data_Type<COLLADAFW::UniqueId> rb_cCFWUniqueId;
 
-static VALUE ull2num(unsigned long long const x) {
+static VALUE ull2num(COLLADAFW::ObjectId const x) {
 	return ULL2NUM(x);
 }
 
-template<> Rice::Object to_ruby<unsigned long long>(unsigned long long const & x)
+template<> Rice::Object to_ruby<COLLADAFW::ObjectId>(COLLADAFW::ObjectId const & x)
 {
-    return Rice::protect(ull2num, x);
+	return Rice::protect(ull2num, x);
 }
 
-template<> unsigned long long from_ruby<unsigned long long>(Rice::Object x)
+template<> COLLADAFW::ObjectId from_ruby<COLLADAFW::ObjectId>(Rice::Object x)
 {
-	return NUM2ULL(x);
+	return (COLLADAFW::ObjectId) NUM2ULL(x);
 }
 
 void rb_define_CFWUniqueId()
 {
 	rb_cCFWUniqueId = rb_cCFW.define_class<COLLADAFW::UniqueId>("UniqueId");
-	rb_cCFWUniqueId.define_constructor(Constructor<COLLADAFW::UniqueId>());
+	rb_cCFWUniqueId.define_constructor(
+		Constructor<
+			COLLADAFW::UniqueId,
+			COLLADAFW::ClassId,
+			COLLADAFW::ObjectId,
+			COLLADAFW::FileId
+		>()//,
+		//(
+		//	Arg("class_id") = COLLADAFW::COLLADA_TYPE::NO_TYPE,
+		//	Arg("object_id") = 0,
+		//	Arg("file_id") = 0
+		//)
+	);
 	rb_cCFWUniqueId.define_method("class_id", &COLLADAFW::UniqueId::getClassId);
 	rb_cCFWUniqueId.define_method("object_id", &COLLADAFW::UniqueId::getObjectId);
 	rb_cCFWUniqueId.define_method("file_id", &COLLADAFW::UniqueId::getFileId);
