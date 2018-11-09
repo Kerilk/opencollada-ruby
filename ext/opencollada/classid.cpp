@@ -5,7 +5,7 @@ using namespace Rice;
 
 Enum<COLLADAFW::ClassId> rb_cCFWClassId;
 
-template<> inline COLLADAFW::ClassId from_ruby<COLLADAFW::ClassId>(Rice::Object x)
+template<> COLLADAFW::ClassId from_ruby<COLLADAFW::ClassId>(Rice::Object x)
 {
 	Rice::Data_Object<COLLADAFW::ClassId> d(x, rb_cCFWClassId);
 	return *d;
