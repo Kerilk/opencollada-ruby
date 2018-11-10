@@ -29,12 +29,12 @@ void rb_define_CFWUniqueId()
 			COLLADAFW::ClassId,
 			COLLADAFW::ObjectId,
 			COLLADAFW::FileId
-		>()//,
-		//(
-		//	Arg("class_id") = COLLADAFW::COLLADA_TYPE::NO_TYPE,
-		//	Arg("object_id") = 0,
-		//	Arg("file_id") = 0
-		//)
+		>(),
+		(
+			Arg("class_id") = COLLADAFW::COLLADA_TYPE::NO_TYPE,
+			Arg("object_id") = (COLLADAFW::ObjectId)0,
+			Arg("file_id") = (COLLADAFW::FileId)0
+		)
 	);
 	rb_cCFWUniqueId.define_method("class_id", &COLLADAFW::UniqueId::getClassId);
 	rb_cCFWUniqueId.define_method("object_id", &COLLADAFW::UniqueId::getObjectId);
