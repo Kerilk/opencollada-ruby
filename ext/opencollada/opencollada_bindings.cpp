@@ -3,6 +3,8 @@
 #include "opencollada.hpp"
 #include "classid.hpp"
 #include "uniqueid.hpp"
+#include "baseobject.hpp"
+#include "geometry.hpp"
 
 using namespace Rice;
 
@@ -15,4 +17,5 @@ void Init_opencollada_bindings()
 	rb_cCFW = rb_cOpenCOLLADA.define_module("FW");
 	rb_define_CFWClassId();
 	rb_define_CFWUniqueId();
+	rb_define_CFWGeometry();
 }
