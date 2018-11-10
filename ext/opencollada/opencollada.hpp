@@ -1,7 +1,7 @@
-#include "rice/Module.hpp"
-
 #ifndef OPENCOLLADA_HPP
 #define OPENCOLLADA_HPP
+
+#include "rice/Module.hpp"
 
 using namespace Rice;
 

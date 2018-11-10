@@ -1,8 +1,8 @@
-#include "rice/Class.hpp"
-#include <COLLADAFWObject.h>
-
 #ifndef BASEOBJECT_HPP
 #define BASEOBJECT_HPP
+
+#include "rice/Class.hpp"
+#include <COLLADAFWObject.h>
 
 using namespace Rice;
 

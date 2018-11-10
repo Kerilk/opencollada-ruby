@@ -1,14 +1,14 @@
-#include "rice/Enum.hpp"
-#include <COLLADAFWTypes.h>
-
 #ifndef CLASSID_HPP
 #define CLASSID_HPP
 
+#include "rice/Enum.hpp"
+#include <COLLADAFWTypes.h>
+
 using namespace Rice;
 
-extern Rice::Enum<COLLADAFW::ClassId> rb_cCFWClassId;
+extern Enum<COLLADAFW::ClassId> rb_cCFWClassId;
 
-template<> COLLADAFW::ClassId from_ruby<COLLADAFW::ClassId>(Rice::Object x);
+template<> COLLADAFW::ClassId from_ruby<COLLADAFW::ClassId>(Object x);
 
 void rb_define_CFWClassId();
 #endif
