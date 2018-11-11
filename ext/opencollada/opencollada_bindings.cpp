@@ -5,6 +5,7 @@
 #include "uniqueid.hpp"
 #include "baseobject.hpp"
 #include "geometry.hpp"
+#include "animatable.hpp"
 
 using namespace Rice;
 
@@ -18,4 +19,5 @@ void Init_opencollada_bindings()
 	rb_define_CFWClassId();
 	rb_define_CFWUniqueId();
 	rb_define_CFWGeometry();
+	rb_define_CFWAnimatable();
 }
