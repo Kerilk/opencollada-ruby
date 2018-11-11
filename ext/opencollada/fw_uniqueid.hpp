@@ -4,7 +4,7 @@
 #include "rice/Data_Type.hpp"
 #include <COLLADAFWUniqueId.h>
 #include "fw.hpp"
-#include "fw_classid.hpp"
+#include "fw_types.hpp"
 
 using namespace Rice;
 

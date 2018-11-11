@@ -1,7 +1,7 @@
 #include "rice/Module.hpp"
 #include <COLLADAFW.h>
 #include "fw.hpp"
-#include "fw_classid.hpp"
+#include "fw_types.hpp"
 #include "fw_uniqueid.hpp"
 #include "fw_geometry.hpp"
 #include "fw_animatable.hpp"

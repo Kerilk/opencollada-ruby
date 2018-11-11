@@ -5,7 +5,7 @@
 #include "fw.hpp"
 #include "fw_objecttemplate.hpp"
 #include "fw_geometry.hpp"
-#include "fw_uniqueid.hpp"
+#include "fw_types.hpp"
 
 
 using namespace Rice;
