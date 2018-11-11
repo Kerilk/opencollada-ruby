@@ -3,7 +3,6 @@
 #include "fw.hpp"
 #include "fw_classid.hpp"
 #include "fw_uniqueid.hpp"
-#include "fw_baseobject.hpp"
 #include "fw_geometry.hpp"
 #include "fw_animatable.hpp"
 
