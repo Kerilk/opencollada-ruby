@@ -1,9 +1,17 @@
 #include "fw.hpp"
 #include "fw_types.hpp"
+#include "fw_arrayprimirivetype.hpp"
 
 using namespace Rice;
 
 Enum<COLLADAFW::ClassId> rb_cCFWClassId;
+
+Data_Type<COLLADAFW::ArrayPrimitiveType<float>> rb_cCFWFloatArray;
+
+void rb_define_CFWArrays()
+{
+	rb_createCFWArrayPrimitiveTypeClass<float>(rb_cCFWFloatArray, "FloatArray");
+}
 
 void rb_define_CFWClassId()
 {
