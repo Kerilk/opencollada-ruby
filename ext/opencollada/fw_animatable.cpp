@@ -1,8 +1,8 @@
 #include "rice/Data_Type.hpp"
 #include "rice/Constructor.hpp"
 #include <COLLADAFWAnimatable.h>
-#include "opencollada.hpp"
-#include "animatable.hpp"
+#include "fw.hpp"
+#include "fw_animatable.hpp"
 
 Data_Type<COLLADAFW::Animatable> rb_cCFWAnimatable;
 

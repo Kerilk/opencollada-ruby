@@ -3,8 +3,8 @@
 
 #include "rice/Data_Type.hpp"
 #include <COLLADAFWUniqueId.h>
-#include "opencollada.hpp"
-#include "classid.hpp"
+#include "fw.hpp"
+#include "fw_classid.hpp"
 
 using namespace Rice;
 

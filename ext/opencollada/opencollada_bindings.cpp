@@ -1,11 +1,11 @@
 #include "rice/Module.hpp"
 #include <COLLADAFW.h>
-#include "opencollada.hpp"
-#include "classid.hpp"
-#include "uniqueid.hpp"
-#include "baseobject.hpp"
-#include "geometry.hpp"
-#include "animatable.hpp"
+#include "fw.hpp"
+#include "fw_classid.hpp"
+#include "fw_uniqueid.hpp"
+#include "fw_baseobject.hpp"
+#include "fw_geometry.hpp"
+#include "fw_animatable.hpp"
 
 using namespace Rice;
 

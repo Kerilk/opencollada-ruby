@@ -2,10 +2,10 @@
 #include "rice/Enum.hpp"
 #include "rice/Constructor.hpp"
 #include <COLLADAFWGeometry.h>
-#include "opencollada.hpp"
-#include "baseobject.hpp"
-#include "geometry.hpp"
-#include "uniqueid.hpp"
+#include "fw.hpp"
+#include "fw_baseobject.hpp"
+#include "fw_geometry.hpp"
+#include "fw_uniqueid.hpp"
 
 
 using namespace Rice;

@@ -4,7 +4,7 @@
 #include "rice/Data_Type.hpp"
 #include "rice/Class.hpp"
 #include <COLLADAFWObject.h>
-#include "opencollada.hpp"
+#include "fw.hpp"
 
 using namespace Rice;
 
