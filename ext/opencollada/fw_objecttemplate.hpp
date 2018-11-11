@@ -1,5 +1,5 @@
-#ifndef BASEOBJECT_HPP
-#define BASEOBJECT_HPP
+#ifndef FW_BASEOBJECT_HPP
+#define FW_BASEOBJECT_HPP
 
 #include "rice/Data_Type.hpp"
 #include "rice/Class.hpp"

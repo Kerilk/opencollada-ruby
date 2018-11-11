@@ -1,5 +1,5 @@
-#ifndef UNIQUE_ID_HPP
-#define UNIQUE_ID_HPP
+#ifndef FW_UNIQUEID_HPP
+#define FW_UNIQUEID_HPP
 
 #include "rice/Data_Type.hpp"
 #include <COLLADAFWUniqueId.h>

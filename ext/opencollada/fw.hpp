@@ -1,5 +1,5 @@
-#ifndef OPENCOLLADA_HPP
-#define OPENCOLLADA_HPP
+#ifndef FRAMEWORK_HPP
+#define FRAMEWORK_HPP
 
 #include "rice/Module.hpp"
 

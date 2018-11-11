@@ -1,5 +1,5 @@
-#ifndef CLASSID_HPP
-#define CLASSID_HPP
+#ifndef FW_CLASSID_HPP
+#define FW_CLASSID_HPP
 
 #include "rice/Enum.hpp"
 #include <COLLADAFWTypes.h>

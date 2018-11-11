@@ -1,5 +1,5 @@
-#ifndef GEOMETRY_HPP
-#define GEOMETRY_HPP
+#ifndef FW_GEOMETRY_HPP
+#define FW_GEOMETRY_HPP
 
 #include "rice/Data_Type.hpp"
 #include <COLLADAFWGeometry.h>

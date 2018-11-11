@@ -1,5 +1,5 @@
-#ifndef ANIMATABLE_HPP
-#define ANIMATABLE_HPP
+#ifndef FW_ANIMATABLE_HPP
+#define FW_ANIMATABLE_HPP
 
 #include "rice/Data_Type.hpp"
 #include <COLLADAFWAnimatable.h>
