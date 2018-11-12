@@ -15,8 +15,7 @@ void Init_opencollada_bindings()
 {
 	Module rb_cOpenCOLLADA = define_module("OpenCOLLADA");
 	rb_cCFW = rb_cOpenCOLLADA.define_module("FW");
-	rb_define_CFWClassId();
-	rb_define_CFWArrays();
+	rb_define_CFWTypes();
 	rb_define_CFWUniqueId();
 	rb_define_CFWGeometry();
 	rb_define_CFWAnimatable();

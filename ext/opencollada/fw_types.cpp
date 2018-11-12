@@ -5,16 +5,38 @@
 using namespace Rice;
 
 Enum<COLLADAFW::ClassId> rb_cCFWClassId;
+Enum<COLLADAFW::PhysicalDimension> rb_cFWPhysicalDimension;
 
+Data_Type<COLLADAFW::ArrayPrimitiveType<unsigned int>> rb_cCFWUIntValuesArray;
+Data_Type<COLLADAFW::ArrayPrimitiveType<int>> rb_cCFWIntValuesArray;
+Data_Type<COLLADAFW::ArrayPrimitiveType<size_t>> rb_cCFWSizeTValuesArray;
+Data_Type<COLLADAFW::ArrayPrimitiveType<unsigned long long>> rb_cCFWULongLongValuesArray;
+Data_Type<COLLADAFW::ArrayPrimitiveType<long long>> rb_cCFWLongLongValuesArray;
 Data_Type<COLLADAFW::ArrayPrimitiveType<float>> rb_cCFWFloatArray;
+Data_Type<COLLADAFW::ArrayPrimitiveType<double>> rb_cCFWDoubleArray;
+Data_Type<COLLADAFW::ArrayPrimitiveType<COLLADAFW::PhysicalDimension>> rb_cCFWPhysicalDimensionArray;
 
-void rb_define_CFWArrays()
+void static rb_define_CFWTypesArrays()
 {
+	rb_createCFWArrayPrimitiveTypeClass<unsigned int>(rb_cCFWUIntValuesArray, "UIntValuesArray");
+	rb_createCFWArrayPrimitiveTypeClass<int>(rb_cCFWIntValuesArray, "IntValuesArray");
+	rb_createCFWArrayPrimitiveTypeClass<size_t>(rb_cCFWSizeTValuesArray, "SizeTValuesArray");
+	rb_createCFWArrayPrimitiveTypeClass<unsigned long long>(rb_cCFWULongLongValuesArray, "ULongLongArray");
+	rb_createCFWArrayPrimitiveTypeClass<long long>(rb_cCFWLongLongValuesArray, "LongLongValuesArray");
 	rb_createCFWArrayPrimitiveTypeClass<float>(rb_cCFWFloatArray, "FloatArray");
+	rb_createCFWArrayPrimitiveTypeClass<double>(rb_cCFWDoubleArray, "DoubleArray");
+	rb_createCFWArrayPrimitiveTypeClass<COLLADAFW::PhysicalDimension>(rb_cCFWPhysicalDimensionArray, "PhysicalDimensionArray");
 }
 
-void rb_define_CFWClassId()
+void static rb_define_CFWTypesEnums()
 {
+	rb_cFWPhysicalDimension = define_enum<COLLADAFW::PhysicalDimension>("PhysicalDimension", rb_cCFW);
+	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_UNKNOWN", COLLADAFW::PHYSICAL_DIMENSION_UNKNOWN);
+	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_TIME", COLLADAFW::PHYSICAL_DIMENSION_TIME);
+	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_LENGTH);
+	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_ANGLE);
+	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_COLOR);
+	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_NUMBER);
 	rb_cCFWClassId = define_enum<COLLADAFW::ClassId>("ClassId", rb_cCFW);
 	rb_cCFWClassId.define_value("NO_TYPE", COLLADAFW::COLLADA_TYPE::NO_TYPE);
 	rb_cCFWClassId.define_value("ANY", COLLADAFW::COLLADA_TYPE::ANY);
@@ -549,4 +571,10 @@ void rb_define_CFWClassId()
 	rb_cCFWClassId.define_value("KINEMATICS_CONTROLLER", COLLADAFW::COLLADA_TYPE::KINEMATICS_CONTROLLER);
 	rb_cCFWClassId.define_value("INSTANCE_KINEMATICS_SCENE", COLLADAFW::COLLADA_TYPE::INSTANCE_KINEMATICS_SCENE);
 
+}
+
+void rb_define_CFWTypes()
+{
+	rb_define_CFWTypesArrays();
+	rb_define_CFWTypesEnums();
 }
