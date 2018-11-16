@@ -4,6 +4,8 @@
 #include "fw.hpp"
 #include "fw_animatable.hpp"
 
+using namespace Rice;
+
 Data_Type<COLLADAFW::Animatable> rb_cCFWAnimatable;
 
 void rb_define_CFWAnimatable()

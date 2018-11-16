@@ -1,6 +1,6 @@
 #include "fw.hpp"
 #include "fw_types.hpp"
-#include "fw_arrayprimirivetype.hpp"
+#include "fw_arrayprimitivetype.hpp"
 
 using namespace Rice;
 
@@ -33,10 +33,10 @@ void static rb_define_CFWTypesEnums()
 	rb_cFWPhysicalDimension = define_enum<COLLADAFW::PhysicalDimension>("PhysicalDimension", rb_cCFW);
 	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_UNKNOWN", COLLADAFW::PHYSICAL_DIMENSION_UNKNOWN);
 	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_TIME", COLLADAFW::PHYSICAL_DIMENSION_TIME);
-	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_LENGTH);
-	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_ANGLE);
-	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_COLOR);
-	rb_cFWPhysicalDimension.define_value("", COLLADAFW::PHYSICAL_DIMENSION_NUMBER);
+	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_LENGTH", COLLADAFW::PHYSICAL_DIMENSION_LENGTH);
+	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_ANGLE", COLLADAFW::PHYSICAL_DIMENSION_ANGLE);
+	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_COLOR", COLLADAFW::PHYSICAL_DIMENSION_COLOR);
+	rb_cFWPhysicalDimension.define_value("PHYSICAL_DIMENSION_NUMBER", COLLADAFW::PHYSICAL_DIMENSION_NUMBER);
 	rb_cCFWClassId = define_enum<COLLADAFW::ClassId>("ClassId", rb_cCFW);
 	rb_cCFWClassId.define_value("NO_TYPE", COLLADAFW::COLLADA_TYPE::NO_TYPE);
 	rb_cCFWClassId.define_value("ANY", COLLADAFW::COLLADA_TYPE::ANY);
