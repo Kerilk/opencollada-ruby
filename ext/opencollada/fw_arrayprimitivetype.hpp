@@ -9,25 +9,35 @@
 
 using namespace Rice;
 
-template<typename T> static inline VALUE rb_CFWAPT_data_type(VALUE klass)
+template<typename T> static inline VALUE rb_CFWAPT_narray_data_type(VALUE klass)
 {
 	return Qnil;
 }
 
-template<> inline VALUE rb_CFWAPT_data_type<int>(VALUE klass)
+template<> inline VALUE rb_CFWAPT_narray_data_type<int>(VALUE klass)
 {
 	return rb_const_get(klass, rb_intern("INT"));
 }
 
-template<> inline VALUE rb_CFWAPT_data_type<float>(VALUE klass)
+template<> inline VALUE rb_CFWAPT_narray_data_type<float>(VALUE klass)
 {
 	return rb_const_get(klass, rb_intern("SFLOAT"));
 }
 
-template<> inline VALUE rb_CFWAPT_data_type<double>(VALUE klass)
+template<> inline VALUE rb_CFWAPT_narray_data_type<double>(VALUE klass)
 {
 	return rb_const_get(klass, rb_intern("FLOAT"));
 }
+
+template<typename T> static inline Object rb_CFWAPT_ffi_data_type() { return Qnil; }
+template<> inline Object rb_CFWAPT_ffi_data_type<unsigned int>() { return rb_intern("uint"); }
+template<> inline Object rb_CFWAPT_ffi_data_type<int>() { return rb_intern("int"); }
+template<> inline Object rb_CFWAPT_ffi_data_type<size_t>() { return rb_intern("size_t"); }
+template<> inline Object rb_CFWAPT_ffi_data_type<unsigned long long>() { return rb_intern("ulong_long"); }
+template<> inline Object rb_CFWAPT_ffi_data_type<long long>() { return rb_intern("long_long"); }
+template<> inline Object rb_CFWAPT_ffi_data_type<float>() { return rb_intern("float"); }
+template<> inline Object rb_CFWAPT_ffi_data_type<double>() { return rb_intern("double"); }
+
 
 template<typename T> static inline const char * CFWAPT_klass_name();
 template<> inline const char * CFWAPT_klass_name<unsigned int>() { return "UIntValuesArray"; }
@@ -46,19 +56,24 @@ template<typename T> static Object rb_CFWAPT_data(Object self)
 	VALUE mod;
 	VALUE klass;
 	VALUE ret;
-	VALUE data_type = Qnil;
+	VALUE narray_type = Qnil;
+	VALUE ffi_type = Qnil;
 	T *data = arr->getData();
 	if (data == NULL)
 		return Qnil;
 	mod = rb_const_get(rb_cObject, rb_intern("FFI"));
 	klass = rb_const_get(mod, rb_intern("Pointer"));
-	ret = rb_funcall(klass, rb_intern("new"), 1, ULL2NUM( sizeof(data) == 4 ? (unsigned long long int) (unsigned long int) data : (unsigned long long int) data));
+	ffi_type = rb_CFWAPT_ffi_data_type<T>();
+	if (ffi_type == Qnil)
+		ret = rb_funcall(klass, rb_intern("new"), 1, ULL2NUM( sizeof(data) == 4 ? (unsigned long long int) (unsigned long int) data : (unsigned long long int) data));
+	else
+		ret = rb_funcall(klass, rb_intern("new"), 2, ID2SYM(ffi_type), ULL2NUM( sizeof(data) == 4 ? (unsigned long long int) (unsigned long int) data : (unsigned long long int) data));
 	ret = rb_funcall(ret, rb_intern("slice"), 2, ULL2NUM(0), ULL2NUM(arr->getCount()*sizeof(T)));
 	klass = rb_const_get(rb_cObject, rb_intern("NArray"));
-	data_type = rb_CFWAPT_data_type<T>(klass);
-	if (data_type == Qnil)
+	narray_type = rb_CFWAPT_narray_data_type<T>(klass);
+	if (narray_type == Qnil)
 		return ret;
-	ret = rb_funcall(klass, rb_intern("to_na"), 3, ret, data_type, ULL2NUM(arr->getCount()));
+	ret = rb_funcall(klass, rb_intern("to_na"), 3, ret, narray_type, ULL2NUM(arr->getCount()));
 	return ret;
 }
 
