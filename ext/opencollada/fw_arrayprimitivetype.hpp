@@ -9,6 +9,36 @@
 
 using namespace Rice;
 
+template<typename T> static inline VALUE rb_CFWAPT_data_type(VALUE klass)
+{
+	return Qnil;
+}
+
+template<> inline VALUE rb_CFWAPT_data_type<int>(VALUE klass)
+{
+	return rb_const_get(klass, rb_intern("INT"));
+}
+
+template<> inline VALUE rb_CFWAPT_data_type<float>(VALUE klass)
+{
+	return rb_const_get(klass, rb_intern("SFLOAT"));
+}
+
+template<> inline VALUE rb_CFWAPT_data_type<double>(VALUE klass)
+{
+	return rb_const_get(klass, rb_intern("FLOAT"));
+}
+
+template<typename T> static inline const char * CFWAPT_klass_name();
+template<> inline const char * CFWAPT_klass_name<unsigned int>() { return "UIntValuesArray"; }
+template<> inline const char * CFWAPT_klass_name<int>() { return "IntValuesArray"; }
+template<> inline const char * CFWAPT_klass_name<size_t>() { return "SizeTValuesArray"; }
+template<> inline const char * CFWAPT_klass_name<unsigned long long>() { return "ULongLongArray"; }
+template<> inline const char * CFWAPT_klass_name<long long>() { return "LongLongValuesArray"; }
+template<> inline const char * CFWAPT_klass_name<float>() { return "FloatArray"; }
+template<> inline const char * CFWAPT_klass_name<double>() { return "DoubleArray"; }
+template<> inline const char * CFWAPT_klass_name<COLLADAFW::PhysicalDimension>() { return "PhysicalDimensionArray"; }
+
 template<typename T> static Object rb_CFWAPT_data(Object self)
 {
 	Data_Object<typename COLLADAFW::ArrayPrimitiveType<T>> d(self);
@@ -101,36 +131,6 @@ template<typename T> inline void rb_add_ArrayPrimitiveType_interface(Data_Type<T
 	klass.define_method("clone_array", &T::cloneArray);
 	klass.define_method("yield_owner_ship", &T::yieldOwnerShip);
 }
-
-template<typename T> static inline VALUE rb_CFWAPT_data_type(VALUE klass)
-{
-	return Qnil;
-}
-
-template<> inline VALUE rb_CFWAPT_data_type<int>(VALUE klass)
-{
-	return rb_const_get(klass, rb_intern("INT"));
-}
-
-template<> inline VALUE rb_CFWAPT_data_type<float>(VALUE klass)
-{
-	return rb_const_get(klass, rb_intern("SFLOAT"));
-}
-
-template<> inline VALUE rb_CFWAPT_data_type<double>(VALUE klass)
-{
-	return rb_const_get(klass, rb_intern("FLOAT"));
-}
-
-template<typename T> static inline const char * CFWAPT_klass_name();
-template<> inline const char * CFWAPT_klass_name<unsigned int>() { return "UIntValuesArray"; }
-template<> inline const char * CFWAPT_klass_name<int>() { return "IntValuesArray"; }
-template<> inline const char * CFWAPT_klass_name<size_t>() { return "SizeTValuesArray"; }
-template<> inline const char * CFWAPT_klass_name<unsigned long long>() { return "ULongLongArray"; }
-template<> inline const char * CFWAPT_klass_name<long long>() { return "LongLongValuesArray"; }
-template<> inline const char * CFWAPT_klass_name<float>() { return "FloatArray"; }
-template<> inline const char * CFWAPT_klass_name<double>() { return "DoubleArray"; }
-template<> inline const char * CFWAPT_klass_name<COLLADAFW::PhysicalDimension>() { return "PhysicalDimensionArray"; }
 
 template<typename T> inline void rb_createCFWArrayPrimitiveTypeClass(Data_Type<COLLADAFW::ArrayPrimitiveType<T>> &rb_cCFWArrayPrimitiveTypeClass)
 {
