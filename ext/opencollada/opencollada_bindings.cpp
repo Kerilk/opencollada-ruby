@@ -5,6 +5,7 @@
 #include "fw_uniqueid.hpp"
 #include "fw_geometry.hpp"
 #include "fw_animatable.hpp"
+#include "fw_floatordouble.hpp"
 
 using namespace Rice;
 
@@ -19,4 +20,5 @@ void Init_opencollada_bindings()
 	rb_define_CFWUniqueId();
 	rb_define_CFWGeometry();
 	rb_define_CFWAnimatable();
+	rb_define_CFWFloatOrDouble();
 }
