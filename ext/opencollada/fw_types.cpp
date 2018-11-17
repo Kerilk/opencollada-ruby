@@ -18,14 +18,14 @@ Data_Type<COLLADAFW::ArrayPrimitiveType<COLLADAFW::PhysicalDimension>> rb_cCFWPh
 
 void static rb_define_CFWTypesArrays()
 {
-	rb_createCFWArrayPrimitiveTypeClass<unsigned int>(rb_cCFWUIntValuesArray, "UIntValuesArray");
-	rb_createCFWArrayPrimitiveTypeClass<int>(rb_cCFWIntValuesArray, "IntValuesArray");
-	rb_createCFWArrayPrimitiveTypeClass<size_t>(rb_cCFWSizeTValuesArray, "SizeTValuesArray");
-	rb_createCFWArrayPrimitiveTypeClass<unsigned long long>(rb_cCFWULongLongValuesArray, "ULongLongArray");
-	rb_createCFWArrayPrimitiveTypeClass<long long>(rb_cCFWLongLongValuesArray, "LongLongValuesArray");
-	rb_createCFWArrayPrimitiveTypeClass<float>(rb_cCFWFloatArray, "FloatArray");
-	rb_createCFWArrayPrimitiveTypeClass<double>(rb_cCFWDoubleArray, "DoubleArray");
-	rb_createCFWArrayPrimitiveTypeClass<COLLADAFW::PhysicalDimension>(rb_cCFWPhysicalDimensionArray, "PhysicalDimensionArray");
+	rb_createCFWArrayPrimitiveTypeClass<unsigned int>(rb_cCFWUIntValuesArray);
+	rb_createCFWArrayPrimitiveTypeClass<int>(rb_cCFWIntValuesArray);
+	rb_createCFWArrayPrimitiveTypeClass<size_t>(rb_cCFWSizeTValuesArray);
+	rb_createCFWArrayPrimitiveTypeClass<unsigned long long>(rb_cCFWULongLongValuesArray);
+	rb_createCFWArrayPrimitiveTypeClass<long long>(rb_cCFWLongLongValuesArray);
+	rb_createCFWArrayPrimitiveTypeClass<float>(rb_cCFWFloatArray);
+	rb_createCFWArrayPrimitiveTypeClass<double>(rb_cCFWDoubleArray);
+	rb_createCFWArrayPrimitiveTypeClass<COLLADAFW::PhysicalDimension>(rb_cCFWPhysicalDimensionArray);
 }
 
 void static rb_define_CFWTypesEnums()
