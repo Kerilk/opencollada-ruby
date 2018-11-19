@@ -6,6 +6,7 @@
 #include "fw_geometry.hpp"
 #include "fw_animatable.hpp"
 #include "fw_floatordouble.hpp"
+#include "fw_meshvertexdata.hpp"
 
 using namespace Rice;
 
@@ -21,4 +22,5 @@ void Init_opencollada_bindings()
 	rb_define_CFWGeometry();
 	rb_define_CFWAnimatable();
 	rb_define_CFWFloatOrDouble();
+	rb_define_CFWMeshVertexData();
 }

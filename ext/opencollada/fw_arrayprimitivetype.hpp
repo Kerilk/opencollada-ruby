@@ -5,6 +5,7 @@
 #include "rice/Enum.hpp"
 #include "rice/Constructor.hpp"
 #include <COLLADAFWArrayPrimitiveType.h>
+#include <COLLADAFWMeshVertexData.h>
 #include "fw.hpp"
 
 using namespace Rice;
@@ -48,6 +49,7 @@ template<> inline const char * CFWAPT_klass_name<long long>() { return "LongLong
 template<> inline const char * CFWAPT_klass_name<float>() { return "FloatArray"; }
 template<> inline const char * CFWAPT_klass_name<double>() { return "DoubleArray"; }
 template<> inline const char * CFWAPT_klass_name<COLLADAFW::PhysicalDimension>() { return "PhysicalDimensionArray"; }
+template<> inline const char * CFWAPT_klass_name<COLLADAFW::MeshVertexData::InputInfos>() { return "InputInfosArray"; }
 
 template<typename T> static Object rb_CFWAPT_data(Object self)
 {
@@ -65,7 +67,7 @@ template<typename T> static Object rb_CFWAPT_data(Object self)
 	klass = rb_const_get(mod, rb_intern("Pointer"));
 	ffi_type = rb_CFWAPT_ffi_data_type<T>();
 	if (ffi_type == Qnil)
-		ret = rb_funcall(klass, rb_intern("new"), 1, ULL2NUM( sizeof(data) == 4 ? (unsigned long long int) (unsigned long int) data : (unsigned long long int) data));
+		ret = rb_funcall(klass, rb_intern("new"), 2, ULL2NUM(sizeof(T)), ULL2NUM( sizeof(data) == 4 ? (unsigned long long int) (unsigned long int) data : (unsigned long long int) data));
 	else
 		ret = rb_funcall(klass, rb_intern("new"), 2, ID2SYM(ffi_type), ULL2NUM( sizeof(data) == 4 ? (unsigned long long int) (unsigned long int) data : (unsigned long long int) data));
 	ret = rb_funcall(ret, rb_intern("slice"), 2, ULL2NUM(0), ULL2NUM(arr->getCount()*sizeof(T)));
