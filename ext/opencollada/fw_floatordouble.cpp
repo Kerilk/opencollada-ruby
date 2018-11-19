@@ -8,7 +8,6 @@
 #include "fw_arrayprimitivetype.hpp"
 #include "fw_types.hpp"
 #include "fw.hpp"
-#include <iostream>
 
 using namespace Rice;
 
@@ -17,9 +16,6 @@ Data_Type<COLLADAFW::FloatOrDoubleArray> rb_cCFWFloatOrDoubleArray;
 static Object rb_CFWFODA_get_values(Object self) {
 	Data_Object<COLLADAFW::FloatOrDoubleArray> d(self, rb_cCFWFloatOrDoubleArray);
 	COLLADAFW::FloatOrDoubleArray *arr = &(*d);
-	VALUE mod;
-	VALUE klass;
-	VALUE ret;
 	if (arr->getType() == COLLADAFW::FloatOrDoubleArray::DataType::DATA_TYPE_FLOAT)
 	{
 		COLLADAFW::FloatArray* f_arr = arr->getFloatValues();
