@@ -5,6 +5,7 @@
 #include "rice/Enum.hpp"
 #include "rice/Constructor.hpp"
 #include <COLLADAFWArrayPrimitiveType.h>
+#include <COLLADAFWMeshPrimitive.h>
 #include <COLLADAFWMeshVertexData.h>
 #include "fw.hpp"
 
@@ -50,6 +51,7 @@ template<> inline const char * CFWAPT_klass_name<float>() { return "FloatArray";
 template<> inline const char * CFWAPT_klass_name<double>() { return "DoubleArray"; }
 template<> inline const char * CFWAPT_klass_name<COLLADAFW::PhysicalDimension>() { return "PhysicalDimensionArray"; }
 template<> inline const char * CFWAPT_klass_name<COLLADAFW::MeshVertexData::InputInfos>() { return "InputInfosArray"; }
+template<> inline const char * CFWAPT_klass_name<COLLADAFW::MeshPrimitive*>() { return "MeshPrimitiveArray"; }
 
 template<typename T> static Object rb_CFWAPT_data(Object self)
 {

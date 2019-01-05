@@ -31,7 +31,11 @@ void rb_define_CFWGeometry() {
 			COLLADAFW::Geometry,
 			COLLADAFW::UniqueId,
 			COLLADAFW::Geometry::GeometryType
-		>()
+		>(),
+		(
+			Arg("unique_id"),
+			Arg("geometry_type") = COLLADAFW::Geometry::GeometryType::GEO_TYPE_UNKNOWN
+                )
 	);
 	rb_cCFWGeometry.define_method("original_id", &COLLADAFW::Geometry::getOriginalId);
 	rb_cCFWGeometry.define_method("original_id=", &COLLADAFW::Geometry::setOriginalId);

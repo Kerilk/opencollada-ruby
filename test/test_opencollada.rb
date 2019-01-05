@@ -39,4 +39,27 @@ class OpenCOLLADATest < Minitest::Test
     assert_equal 0, farr.capacity
   end
 
+  def test_geometry
+    geo = OpenCOLLADA::FW::Geometry::new(OpenCOLLADA::FW::UniqueId::new(OpenCOLLADA::FW::ClassId::GEOMETRY, 2, 5), OpenCOLLADA::FW::Geometry::GeometryType::GEO_TYPE_MESH)
+    assert_equal OpenCOLLADA::FW::UniqueId::new(OpenCOLLADA::FW::ClassId::GEOMETRY, 2, 5), geo.unique_id
+    assert_equal OpenCOLLADA::FW::Geometry::GeometryType::GEO_TYPE_MESH, geo.type
+
+  end
+
+  def test_animatable
+    anim = OpenCOLLADA::FW::Animatable::new
+    assert_equal OpenCOLLADA::FW::UniqueId::new, anim.animation_list
+    anim.animation_list = OpenCOLLADA::FW::UniqueId::new(OpenCOLLADA::FW::ClassId::ANIMATIONLIST, 2, 5)
+    assert_equal OpenCOLLADA::FW::UniqueId::new(OpenCOLLADA::FW::ClassId::ANIMATIONLIST, 2, 5), anim.animation_list
+  end
+
+  def test_meshvertexdata
+    d = OpenCOLLADA::FW::MeshVertexData::new
+    assert_equal 0, d.num_inputs_info
+  end
+
+  def test_meshprimitive
+    p = OpenCOLLADA::FW::MeshPrimitive::new(OpenCOLLADA::FW::UniqueId::new(OpenCOLLADA::FW::ClassId::PRIMITIVE_ELEMENT, 2, 5))
+  end
+
 end
