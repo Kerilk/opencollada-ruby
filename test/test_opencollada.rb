@@ -62,4 +62,8 @@ class OpenCOLLADATest < Minitest::Test
     p = OpenCOLLADA::FW::MeshPrimitive::new(OpenCOLLADA::FW::UniqueId::new(OpenCOLLADA::FW::ClassId::PRIMITIVE_ELEMENT, 2, 5))
   end
 
+  def test_saxfwl_loader
+    l = OpenCOLLADA::SaxFWL::Loader::new
+  end
+
 end
