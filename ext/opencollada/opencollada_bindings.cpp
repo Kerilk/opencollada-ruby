@@ -12,6 +12,8 @@
 #include "saxfwl.hpp"
 #include "saxfwl_loader.hpp"
 
+#include "ruby_importer.hpp"
+
 using namespace Rice;
 
 Module rb_cCFW;
