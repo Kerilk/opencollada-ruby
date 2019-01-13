@@ -11,4 +11,7 @@ extern Data_Type<COLLADAFW::MeshVertexData> rb_cCFWMeshVertexData;
 
 void rb_define_CFWMeshVertexData();
 
+template<>
+Object to_ruby<COLLADAFW::MeshVertexData>(COLLADAFW::MeshVertexData const & x);
+
 #endif

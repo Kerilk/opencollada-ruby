@@ -10,6 +10,12 @@ using namespace Rice;
 
 Data_Type<COLLADAFW::MeshVertexData> rb_cCFWMeshVertexData;
 
+template<>
+Object to_ruby<COLLADAFW::MeshVertexData>(COLLADAFW::MeshVertexData const & x)
+{
+	return to_ruby(&x);
+}
+
 void rb_define_CFWMeshVertexData()
 {
 	rb_cCFWMeshVertexData = rb_cCFW.define_class<COLLADAFW::MeshVertexData, COLLADAFW::FloatOrDoubleArray>("MeshVertexData");

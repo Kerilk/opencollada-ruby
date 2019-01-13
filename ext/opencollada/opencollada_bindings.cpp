@@ -9,6 +9,7 @@
 #include "fw_floatordouble.hpp"
 #include "fw_meshvertexdata.hpp"
 #include "fw_meshprimitive.hpp"
+#include "fw_mesh.hpp"
 #include "fw_iwriter.hpp"
 
 #include "ruby_importer.hpp"
@@ -35,6 +36,7 @@ void Init_opencollada_bindings()
 	rb_define_CFWFloatOrDouble();
 	rb_define_CFWMeshVertexData();
 	rb_define_CFWMeshPrimitive();
+	rb_define_CFWMesh();
 	rb_define_CFWIWriter();
 
 	rb_define_CImporter();

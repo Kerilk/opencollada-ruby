@@ -11,6 +11,12 @@
 
 using namespace Rice;
 
+template<typename T>
+Object to_ruby(COLLADAFW::ArrayPrimitiveType<T> const & x)
+{
+	return to_ruby(&x);
+}
+
 template<typename T> static inline VALUE rb_CFWAPT_narray_data_type(VALUE klass)
 {
 	return Qnil;

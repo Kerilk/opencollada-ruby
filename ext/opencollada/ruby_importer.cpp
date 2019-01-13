@@ -4,6 +4,8 @@
 #include "opencollada_bindings.hpp"
 #include <ruby.h>
 #include <ruby/thread.h>
+#include "fw_mesh.hpp"
+#include "fw_geometry.hpp"
 
 using namespace Rice;
 
@@ -38,7 +40,24 @@ bool RubyImporter::writeLibraryNodes ( const COLLADAFW::LibraryNodes* libraryNod
 bool RubyImporter::writeGeometry ( const COLLADAFW::Geometry* geometry )
 {
 	Data_Object<RubyImporter> wrappedRubyImporter(this, rb_cCImporter, nullptr, nullptr);
-	wrappedRubyImporter.call("at_write_geometry");
+	switch( geometry->getType() ) {
+	case COLLADAFW::Geometry::GeometryType::GEO_TYPE_MESH:
+		{
+			Data_Object<COLLADAFW::Mesh> wrappedMesh((COLLADAFW::Mesh *)geometry, rb_cCFWMesh, nullptr, nullptr);
+			wrappedRubyImporter.call("at_write_geometry", wrappedMesh);
+		}
+		break;
+	case COLLADAFW::Geometry::GeometryType::GEO_TYPE_SPLINE:
+	case COLLADAFW::Geometry::GeometryType::GEO_TYPE_CONVEX_MESH:
+	case COLLADAFW::Geometry::GeometryType::GEO_TYPE_UNKNOWN:
+		{
+			Data_Object<COLLADAFW::Geometry> wrappedGeometry((COLLADAFW::Geometry*)geometry, rb_cCFWGeometry, nullptr, nullptr);
+			wrappedRubyImporter.call("at_write_geometry", wrappedGeometry);
+		}
+		break;
+	default:
+		return false;
+	}
 	return true;
 }
 

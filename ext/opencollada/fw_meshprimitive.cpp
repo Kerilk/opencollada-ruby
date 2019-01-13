@@ -14,7 +14,14 @@ Data_Type<COLLADAFW::MeshPrimitive> rb_cCFWMeshPrimitive;
 Enum<COLLADAFW::MeshPrimitive::PrimitiveType> rb_cCFWMPPrimitiveType;
 Data_Type<COLLADAFW::ArrayPrimitiveType<COLLADAFW::MeshPrimitive *>> rb_cCFWMeshPrimitiveArray;
 
-template<> COLLADAFW::MeshPrimitive::PrimitiveType from_ruby<COLLADAFW::MeshPrimitive::PrimitiveType>(Rice::Object x)
+template<>
+Object to_ruby<COLLADAFW::ArrayPrimitiveType<COLLADAFW::MeshPrimitive *>>(COLLADAFW::ArrayPrimitiveType<COLLADAFW::MeshPrimitive *> const & x)
+{
+	return to_ruby(&x);
+}
+
+template<>
+COLLADAFW::MeshPrimitive::PrimitiveType from_ruby<COLLADAFW::MeshPrimitive::PrimitiveType>(Rice::Object x)
 {
 	Rice::Data_Object<COLLADAFW::MeshPrimitive::PrimitiveType> d(x, rb_cCFWMPPrimitiveType);
         return *d;
