@@ -1,5 +1,6 @@
 #include "rice/Data_Type.hpp"
 #include "rice/Constructor.hpp"
+#include "ruby_importer.hpp"
 #include "saxfwl.hpp"
 #include "saxfwl_loader.hpp"
 
@@ -15,6 +16,15 @@ void rb_define_CSaxFWLLoader()
 		>(),
 		(
 			Arg("error_handler") = (COLLADASaxFWL::IErrorHandler*)0
+		)
+	);
+	typedef bool (COLLADASaxFWL::Loader::*load_document_from_file)(const COLLADAFW::String&, COLLADAFW::IWriter*);
+	rb_cCSaxFWLLoader.define_method(
+		"load_document",
+		load_document_from_file(&COLLADASaxFWL::Loader::loadDocument),
+		(
+			Arg("file_name"),
+			Arg("loader") = new RubyImporter()
 		)
 	);
 }

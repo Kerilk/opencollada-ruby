@@ -64,6 +64,11 @@ class OpenCOLLADATest < Minitest::Test
 
   def test_saxfwl_loader
     l = OpenCOLLADA::SaxFWL::Loader::new
+    assert l.load_document("duck.dae")
+  end
+
+  def test_importer
+    i = OpenCOLLADA::Importer::new
   end
 
 end

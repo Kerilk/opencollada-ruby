@@ -12,6 +12,7 @@ dir_config('OpenCOLLADASaxFrameworkLoader', saxfwl_h_path, lib_path)
 dir_config('GeneratedSaxParser', gsaxp_h_path, lib_path)
 
 $defs.push("-DHAVE_CXX11")
-$LDFLAGS += " -Bstatic -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser -lOpenCOLLADAFramework -lOpenCOLLADABaseUtils -lMathMLSolver -lUTF -lftoa -lbuffer -lxml2 -lpcre"
+$LDFLAGS += " -g -Bstatic -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser -lOpenCOLLADAFramework -lOpenCOLLADABaseUtils -lMathMLSolver -lUTF -lftoa -lbuffer -lxml2 -lpcre"
+
 
 create_makefile('opencollada_bindings')

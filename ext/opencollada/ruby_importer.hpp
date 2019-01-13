@@ -1,5 +1,6 @@
 #ifndef RUBY_IMPORTER_HPP
 #define RUBY_IMPORTER_HPP
+#include "rice/Data_Type.hpp"
 #include <COLLADAFW.h>
 #include <string>
 
@@ -46,5 +47,11 @@ class RubyImporter : public COLLADAFW::IWriter {
 	virtual bool writeKinematicsScene( const COLLADAFW::KinematicsScene* kinematicsScene );
 
 };
+
+using namespace Rice;
+
+extern Data_Type<RubyImporter> rb_cCImporter;
+
+void rb_define_CImporter();
 
 #endif

@@ -63,7 +63,7 @@ template<typename T> static Object rb_CFWAPT_data(Object self)
 	VALUE narray_type = Qnil;
 	VALUE ffi_type = Qnil;
 	T *data = arr->getData();
-	if (data == NULL)
+	if (data == nullptr)
 		return Qnil;
 	mod = rb_const_get(rb_cObject, rb_intern("FFI"));
 	klass = rb_const_get(mod, rb_intern("Pointer"));
